@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="soNAeo" name="FamilySircle" projectType="audioplug" pluginFormats="buildAU,buildStandalone,buildVST3"
+<JUCERPROJECT id="soNAeo" name="TheScrambler" projectType="audioplug" pluginFormats="buildAU,buildStandalone,buildVST3"
               pluginVST3Category="Fx" pluginName="TheScrambler" pluginDesc="Scrambler your life"
               pluginManufacturer="Swn" pluginManufacturerCode="Swn" pluginCode="scbl"
               bundleIdentifier="com.swn.TheScrambler" version="0.0.1" companyName="Swn"
               displaySplashScreen="1" jucerFormatVersion="1" pluginAUIsSandboxSafe="1"
               pluginAUMainType="'aumf'">
-  <MAINGROUP id="sbeuvk" name="FamilySircle">
+  <MAINGROUP id="sbeuvk" name="TheScrambler">
     <GROUP id="{B6B3188D-8896-4269-223D-CB4C6D5273BD}" name="Source">
       <FILE id="D9t8iF" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
