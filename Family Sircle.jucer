@@ -2,10 +2,10 @@
 
 <JUCERPROJECT id="soNAeo" name="TheScrambler" projectType="audioplug" pluginFormats="buildAU,buildStandalone,buildVST3"
               pluginVST3Category="Fx" pluginName="TheScrambler" pluginDesc="Scrambler your life"
-              pluginManufacturer="Swn" pluginManufacturerCode="Swn" pluginCode="scbl"
+              pluginManufacturer="Swn" pluginManufacturerCode="Swwn" pluginCode="scbl"
               bundleIdentifier="com.swn.TheScrambler" version="0.0.1" companyName="Swn"
               displaySplashScreen="1" jucerFormatVersion="1" pluginAUIsSandboxSafe="1"
-              pluginAUMainType="'aumf'">
+              pluginAUMainType="'aumf'" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
   <MAINGROUP id="sbeuvk" name="TheScrambler">
     <GROUP id="{B6B3188D-8896-4269-223D-CB4C6D5273BD}" name="Source">
       <FILE id="D9t8iF" name="PluginProcessor.cpp" compile="1" resource="0"
