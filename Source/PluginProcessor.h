@@ -7,6 +7,8 @@
 
   ==============================================================================
 */
+#ifndef PLUGIN_PROCESSOR_H
+#define PLUGIN_PROCESSOR_H
 
 #pragma once
 
@@ -86,3 +88,5 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FamilySircleAudioProcessor)
 };
+
+#endif

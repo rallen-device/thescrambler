@@ -7,18 +7,16 @@
 
   ==============================================================================
 */
-
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
-#include "AnimatedSky.h"
-#include "AnimatedScene.h"
+#include "gui/AnimatedScene.h"
 
 //==============================================================================
 /**
 */
-class FamilySircleAudioProcessorEditor  :	public AudioProcessorEditor, 
+class FamilySircleAudioProcessorEditor  :	public AudioProcessorEditor,
 											private Timer,
 											public TextEditor::Listener
 {
@@ -31,7 +29,7 @@ public:
     void resized() override;
 	void sliderValueChangeGain(Slider* slider);
 
-	void textEditorReturnKeyPressed(TextEditor& t);
+	void textEditorReturnKeyPressed(TextEditor& t) override;
 	void textOutputUpdate(String input, String reply);
 	void textOutputUpdateDebug(String debug);
 	String processTextInput(String s);

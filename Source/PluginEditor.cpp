@@ -8,8 +8,15 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
+#ifndef PLUGINEDITOR_H
+#define PLUGINEDITOR_H
+
 #include "PluginEditor.h"
+#include "TextChatHandler.h"
+
+
+TextChatHandler tch;
+
 #pragma warning (disable: 4100)
 //==============================================================================
 FamilySircleAudioProcessorEditor::FamilySircleAudioProcessorEditor (FamilySircleAudioProcessor& p)
@@ -44,6 +51,8 @@ FamilySircleAudioProcessorEditor::FamilySircleAudioProcessorEditor (FamilySircle
 	// set overall size
 	setSize(800, 500);
 	startTimerHz(30);
+    
+    tch = TextChatHandler();
 }
 
 FamilySircleAudioProcessorEditor::~FamilySircleAudioProcessorEditor()
@@ -78,7 +87,7 @@ void FamilySircleAudioProcessorEditor::sliderValueChangeGain(Slider* slide)
 
 void FamilySircleAudioProcessorEditor::textEditorReturnKeyPressed(TextEditor& t)
 {
-	String reply = processTextInput(t.getText());
+	String reply = tch.processTextInput(t.getText());
 	textOutputUpdate(t.getText(), reply);
 	t.setText(String("                                           "));
 	t.clear();
@@ -218,5 +227,5 @@ void FamilySircleAudioProcessorEditor::timerCallback()
 	scene.getSky().getMetronomeStar().setMainColour2(metronomeColours[(processor.getBeatNumber())]);
 }
 
-
+#endif
 

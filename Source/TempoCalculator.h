@@ -8,7 +8,8 @@
   ==============================================================================
 */
 
-#pragma once
+#ifndef TEMPOCALCULATOR_H
+#define TEMPOCALCULATOR_H
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -39,3 +40,5 @@ private:
 	}; 
 	TEMPOCALC_T tempoCalc{ 120, 44100, 100, int64 (0), 0, 4 };
 };
+
+#endif
