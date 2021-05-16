@@ -58,38 +58,148 @@ String TextChatHandler::processTextInput(String input)
     std::cout << "\n\r";
     
     int index = 0;
-    std::string effect = NULL_STRING;
-    std::string command = NULL_STRING;
-    std::string arg0 = NULL_STRING;
-    std::string arg1 = NULL_STRING;
+    incomingText.effect = NULL_STRING;
+    incomingText.command = NULL_STRING;
+    incomingText.arg0 = NULL_STRING;
+    incomingText.arg1 = NULL_STRING;
+    incomingText.function = NULL_STRING;
+    incomingText.type = CMD_NOT_CMD;
+    incomingText.max = NULL_STRING;
+    incomingText.min = NULL_STRING;
     
-    effect =  inputstring.substr(0, spacesindex[index]);
+    incomingText.effect =  inputstring.substr(0, spacesindex[index]);
     index++;
     if (count == 0)
     {
-        effect = inputstring;
+        incomingText.effect = inputstring;
     }
     if (index <= count)
     {
-        command = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
+        incomingText.command = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
         index++;
         if (index <= count)
         {
-            arg0 = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
+            incomingText.arg0 = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
             index++;
             if (index <= count)
             {
-                arg1 = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
+                incomingText.arg1 = inputstring.substr(spacesindex[index-1]+1, (spacesindex[index] - spacesindex[index-1] - 1));
             }
         }
     }
     
-    if (effect == "Help")
+    if (incomingText.effect == "help")
     {
         return String (printHelp());
     }
     
-    return String(effect + " " + command + " " + arg0 + " " + arg1 );
+    std::string inputvalidstring = checkInputValid();
+    
+    if (inputvalidstring == STRING_GOOD)
+    {
+        return incomingText.function;
+    }
+        
+    
+    return inputvalidstring;
+}
+
+std::string TextChatHandler::checkInputValid ()
+{
+    std::string s = "";
+    bool effectgood = false;
+    for (int index = 0; index < CHAT_STRUCT_LEN; index++)
+    {
+        if (incomingText.effect == chatstruct[index].name)
+        {
+            effectgood = true;
+        }
+    }
+    
+    bool commandgood = false;
+    for (int index = 0; index < CHAT_STRUCT_LEN; index++)
+    {
+        if (incomingText.command == chatstruct[index].command)
+        {
+            commandgood = true;
+            incomingText.function = chatstruct[index].func;
+            incomingText.type = chatstruct[index].type;
+            incomingText.max = chatstruct[index].max;
+            incomingText.min = chatstruct[index].min;
+        }
+    }
+    
+    bool argsgood = false;
+    if (incomingText.type == CMD_NULL)
+    {
+        s = STRING_GOOD;
+        argsgood = true;
+    }
+    else if (incomingText.type == CMD_DIGIT)
+    {
+        if (incomingText.max.find(' ') != std::string::npos)
+        {
+            
+        }
+        else
+        {
+            if (atoi( incomingText.arg0.c_str()) > atoi( incomingText.min.c_str()) &&
+                atoi( incomingText.arg0.c_str()) < atoi( incomingText.max.c_str()))
+            {
+                s = STRING_GOOD;
+                argsgood = true;
+            }
+        }
+    }
+    else if (incomingText.type == CMD_SEL)
+    {
+        bool selectswitch = false;
+        for (int index = 0; index < CHAT_STRUCT_LEN; index++)
+        {
+            if ((chatstruct[index].command == incomingText.command) &&
+                (chatstruct[index-1].name == incomingText.effect))
+            {
+                selectswitch = true;
+            }
+            else if ((selectswitch == true) && (chatstruct[index].command != NULL_STRING))
+            {
+                selectswitch = false;
+            }
+            if (selectswitch == true)
+            {
+                if (incomingText.arg0 == chatstruct[index].arguments)
+                {
+                    s = STRING_GOOD;
+                    argsgood = true;
+                }
+            }
+        }
+    }
+    
+    if (argsgood == false)
+    {
+        if (incomingText.type != CMD_SEL)
+        {
+            s = "Arguments out of range, must be within: " + incomingText.min + " and " + incomingText.max;
+        }
+        else
+        {
+            s = "Argument does not match what it should, check help to see what it should be";
+        }
+    }
+    
+    
+    if (effectgood == false)
+    {
+        s = "Command for " + incomingText.effect + " does not exist, try again or type 'help'";
+    }
+    
+    if (effectgood == false)
+    {
+        s = "No effect input, try again or type 'help'";
+    }
+    
+    return s;
 }
 
 std::string TextChatHandler::printHelp()

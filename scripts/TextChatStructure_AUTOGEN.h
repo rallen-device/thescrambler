@@ -35,23 +35,22 @@ struct S_TEXT_CHAT {
 };
 
 #define NULL_STRING ""
-#define CHAT_STRUCT_LEN 12
+#define CHAT_STRUCT_LEN 11
 const S_TEXT_CHAT chatstruct [CHAT_STRUCT_LEN] =
 
 {
-// Name          Description                                                                                      Command         Arguments      Type         Max          Min          File          Function        
-{"RandVolume", "Bar is sliced into “x” number of bars, each slice is set at a random volume between 0 and 100", NULL_STRING,    NULL_STRING,   CMD_NOT_CMD, NULL_STRING, NULL_STRING, "RandVolume", NULL_STRING,    },
-{NULL_STRING,  "Number of slices the bar is split into",                                                        "Bars",         "X",           CMD_DIGIT,   "1",         "20",        NULL_STRING,  "Bar",          },
-{NULL_STRING,  "Regenerate the random volumes for each slice",                                                  "Regen",        NULL_STRING,   CMD_NULL,    NULL_STRING, NULL_STRING, NULL_STRING,  "Regen",        },
-{NULL_STRING,  "Volume of individual slice between 0 and 100",                                                  "VolSlice",     "Bar, Volume", CMD_DIGIT,   "20, 100",   "0, 0",      NULL_STRING,  "VolSlice",     },
-{"RingMod",    "Ring mod applied to input, carrier signal is either fixed sine wave or variable sine wave",     NULL_STRING,    NULL_STRING,   CMD_NOT_CMD, NULL_STRING, NULL_STRING, "RingMod",    NULL_STRING,    },
-{NULL_STRING,  "Type of carrier frequency",                                                                     "Type",         NULL_STRING,   CMD_SEL,     NULL_STRING, NULL_STRING, NULL_STRING,  "Type",         },
-{NULL_STRING,  "Fixed carrier frequency",                                                                       NULL_STRING,    "Fixed",       CMD_NOT_CMD, NULL_STRING, NULL_STRING, NULL_STRING,  NULL_STRING,    },
-{NULL_STRING,  "Variable carrier frequency",                                                                    NULL_STRING,    "Variable",    CMD_NOT_CMD, NULL_STRING, NULL_STRING, NULL_STRING,  NULL_STRING,    },
-{NULL_STRING,  "Fixed carrier frequency",                                                                       "Freq",         "Freq",        CMD_DIGIT,   "10",        "40000",     NULL_STRING,  "Freq",         },
-{NULL_STRING,  "Minimum frequency for the variable frequency",                                                  "VarFreqMin",   "FreqMin",     CMD_DIGIT,   "10",        "40000",     NULL_STRING,  "VarFreqMin",   },
-{NULL_STRING,  "Maximum frequency for the variable frequency",                                                  "VarFreqMax",   "FreqMax",     CMD_DIGIT,   "10",        "40000",     NULL_STRING,  "VarFreqMax",   },
-{NULL_STRING,  "Sweep time from the maximum to the minimum variable frequency and back in milliseconds",        "VarFreqSweep", "FreqSweep",   CMD_DIGIT,   "1",         "10000",     NULL_STRING,  "VarFreqSweep", },
+// Name          Description                                                                                      Command         Arguments    Type         Max          Min          File          Function        
+{"RandVolume", "Bar is sliced into “x” number of bars, each slice is set at a random volume between 0 and 100", NULL_STRING,    NULL_STRING, CMD_NOT_CMD, NULL_STRING, NULL_STRING, "RandVolume", NULL_STRING,    },
+{NULL_STRING,  "Number of slices the bar is split into",                                                        "Bars",         "X",         CMD_DIGIT,   "20",        "1",         NULL_STRING,  "Bar",          },
+{NULL_STRING,  "Regenerate the random volumes for each slice",                                                  "Regen",        NULL_STRING, CMD_NULL,    NULL_STRING, NULL_STRING, NULL_STRING,  "Regen",        },
+{"RingMod",    "Ring mod applied to input, carrier signal is either fixed sine wave or variable sine wave",     NULL_STRING,    NULL_STRING, CMD_NOT_CMD, NULL_STRING, NULL_STRING, "RingMod",    NULL_STRING,    },
+{NULL_STRING,  "Type of carrier frequency",                                                                     "Type",         NULL_STRING, CMD_SEL,     NULL_STRING, NULL_STRING, NULL_STRING,  "Type",         },
+{NULL_STRING,  "Fixed carrier frequency",                                                                       NULL_STRING,    "Fixed",     CMD_NOT_CMD, NULL_STRING, NULL_STRING, NULL_STRING,  NULL_STRING,    },
+{NULL_STRING,  "Variable carrier frequency",                                                                    NULL_STRING,    "Variable",  CMD_NOT_CMD, NULL_STRING, NULL_STRING, NULL_STRING,  NULL_STRING,    },
+{NULL_STRING,  "Fixed carrier frequency",                                                                       "Freq",         "Freq",      CMD_DIGIT,   "40000",     "10",        NULL_STRING,  "Freq",         },
+{NULL_STRING,  "Minimum frequency for the variable frequency",                                                  "VarFreqMin",   "FreqMin",   CMD_DIGIT,   "40000",     "10",        NULL_STRING,  "VarFreqMin",   },
+{NULL_STRING,  "Maximum frequency for the variable frequency",                                                  "VarFreqMax",   "FreqMax",   CMD_DIGIT,   "40000",     "10",        NULL_STRING,  "VarFreqMax",   },
+{NULL_STRING,  "Sweep time from the maximum to the minimum variable frequency and back in milliseconds",        "VarFreqSweep", "FreqSweep", CMD_DIGIT,   "10000",     "1",         NULL_STRING,  "VarFreqSweep", },
 };
 
 
