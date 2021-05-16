@@ -3,3 +3,4 @@ Builds/
 notes/
 binaries/
 .DS_Store
+*.numbers
