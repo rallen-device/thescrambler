@@ -1,0 +1,13 @@
+Name,Description,Command,Arguments,Type,Max,Min,File,Function
+RandVolume,"Bar is sliced into “x” number of bars, each slice is set at a random volume between 0 and 100",,,,,,RandVolume,
+,Number of slices the bar is split into,Bars,X,Number,1,20,,Bar
+,Regenerate the random volumes for each slice,Regen,,Null,,,,Regen
+,Volume of individual slice between 0 and 100,VolSlice,"Bar, Volume",Number,"20, 100","0, 0",,VolSlice
+RingMod,"Ring mod applied to input, carrier signal is either fixed sine wave or variable sine wave",,,,,,RingMod,
+,Type of carrier frequency,Type,,Select,,,,Type
+,Fixed carrier frequency,,Fixed,,,,,
+,Variable carrier frequency,,Variable,,,,,
+,Fixed carrier frequency,Freq,Freq,Number,10,40000,,Freq
+,Minimum frequency for the variable frequency,VarFreqMin,FreqMin,Number,10,40000,,VarFreqMin
+,Maximum frequency for the variable frequency,VarFreqMax,FreqMax,Number,10,40000,,VarFreqMax
+,Sweep time from the maximum to the minimum variable frequency and back in milliseconds,VarFreqSweep,FreqSweep,Number,1,10000,,VarFreqSweep

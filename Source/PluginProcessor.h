@@ -75,6 +75,7 @@ public:
 	float getRandomVolume(int index);
 
 	TempoCalculator& getTempoCalc();
+    float* randomVolumes;
 
 private:
 	AudioPlayHead::CurrentPositionInfo lastPosInfo;
@@ -84,7 +85,6 @@ private:
 	TempoCalculator tempoCalc;
 	Random r;
 	bool randomVolumeState{ false };
-	float* randomVolumes;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FamilySircleAudioProcessor)
 };

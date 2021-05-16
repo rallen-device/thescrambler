@@ -12,8 +12,10 @@
 #define PLUGINEDITOR_H
 
 #include "PluginEditor.h"
-#include "TextChatHandler.h"
+#include "textchat/TextChatHandler.h"
 
+#define TEXTOUTPUTHEIGHT 350
+#define TEXTOUTPUTWIDTH  350
 
 TextChatHandler tch;
 
@@ -77,7 +79,7 @@ void FamilySircleAudioProcessorEditor::resized()
 	slideGain.setBounds(getLocalBounds());
 	scene.setBounds(getLocalBounds());
 	textInput.setBounds(50, getHeight() - 50, getWidth() - 100, 20);
-	textOutput.setBounds(getWidth() - 250, 10, 240, 200);
+	textOutput.setBounds(getWidth() - (TEXTOUTPUTWIDTH + 10), 10, TEXTOUTPUTWIDTH, TEXTOUTPUTHEIGHT);
 }
 
 void FamilySircleAudioProcessorEditor::sliderValueChangeGain(Slider* slide)
